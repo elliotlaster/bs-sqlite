@@ -21,7 +21,7 @@ type test_file_row = {
 
 let decode_insert_result json = Json.Decode.({
   changes = json |> field "changes" int;
-  last_insert_id = json |> field "lastInsertROWID" int;
+  last_insert_id = json |> field "lastInsertRowid" int;
 })
 
 let decode_test_all_row json = Json.Decode.({

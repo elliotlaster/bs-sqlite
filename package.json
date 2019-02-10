@@ -32,7 +32,7 @@
   "author": "Nathan A Sculli <scull7@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "better-sqlite3": "^4.1.0"
+    "better-sqlite3": "^5.4.0"
   },
   "devDependencies": {
     "@glennsl/bs-jest": "^0.4.2",
