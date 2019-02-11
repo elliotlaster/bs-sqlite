@@ -45,7 +45,7 @@ let runner db expected sql fn = (fun () ->
 let () =
 
 describe "Basic functionality" (fun () ->
-  let db = Sqlite.Connection.make ~path:"test.db" ~memory:Js.true_ ()
+  let db = Sqlite.Connection.make ~path:"test.db" ~memory:true ()
   in
   test "Should be able to execute a simple select" (runner db 2
     "SELECT 1+1 AS result"
@@ -74,7 +74,7 @@ describe "Basic functionality" (fun () ->
 );
 
 describe "`all` and `run` functions" (fun () ->
-  let db = Sqlite.Connection.make ~path:"test.db" ~memory:Js.true_ ()
+  let db = Sqlite.Connection.make ~path:"test.db" ~memory: true ()
   in
   beforeAllAsync (fun finish ->
     let _ = Sqlite.Connection.prepare db {|
@@ -139,7 +139,7 @@ describe "File based database" (fun () ->
   afterAll(fun () -> Node.Fs.unlinkSync db_path);
 
   test "insert and retrieve record from file database" (fun () ->
-    let db = Sqlite.Connection.make ~path:db_path ~fileMustExist:Js.true_ ()
+    let db = Sqlite.Connection.make ~path:db_path ~fileMustExist: true ()
     in
     Sqlite.Connection.prepare db {|
       INSERT INTO `test_file_db` (`bar`, `baz`) VALUES ('moo', 'cow')
@@ -152,7 +152,7 @@ describe "File based database" (fun () ->
   );
 
   test "read-only flag" (fun () ->
-    let db = Sqlite.Connection.make ~path:db_path ~readonly:Js.true_ ()
+    let db = Sqlite.Connection.make ~path:db_path ~readonly: true ()
     in
     Expect.expect (fun () ->
       Sqlite.Connection.prepare db {|

@@ -28,9 +28,9 @@ module Connection = struct
     type t
 
     external make :
-      ?memory:Js.boolean ->
-      ?readonly:Js.boolean->
-      ?fileMustExist:Js.boolean ->
+      ?memory: bool ->
+      ?readonly: bool ->
+      ?fileMustExist: bool ->
       unit -> t = "" [@@bs.obj]
   end
 
